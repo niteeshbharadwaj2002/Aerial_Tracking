@@ -4,7 +4,7 @@ import torch
 def main():
     print("CUDA available:", torch.cuda.is_available())
 
-    model = YOLO("yolov8n.pt")  # nano baseline; swap to yolov8s.pt if GPU allows
+    model = YOLO("models/yolov8n.pt")  # nano baseline; swap to yolov8s.pt if GPU allows
 
     results = model.train(
         data="data/visdrone.yaml",

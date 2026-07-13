@@ -1,6 +1,6 @@
 from ultralytics import YOLO
 
-model = YOLO('runs/detect/outputs/runs/visdrone_baseline-6/weights/best.pt')
+model = YOLO('outputs/runs/visdrone_baseline-6/weights/best.pt')
 
 # 1. Metrics on held-out test set
 print("=== Test Set Metrics ===")

@@ -4,8 +4,8 @@ from pathlib import Path
 
 random.seed(42)  # reproducible split
 
-SRC_IMG_DIR = Path("data/VisDrone2019-DET-train/VisDrone2019-DET-train/images")
-SRC_ANN_DIR = Path("data/VisDrone2019-DET-train/VisDrone2019-DET-train/annotations")
+SRC_IMG_DIR = Path("data/VisDrone2019-DET-train/images")
+SRC_ANN_DIR = Path("data/VisDrone2019-DET-train/annotations")
 
 OUT_ROOT = Path("data/VisDrone2019-DET-split")
 TRAIN_RATIO = 0.8
