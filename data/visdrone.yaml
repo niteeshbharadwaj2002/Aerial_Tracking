@@ -1,1 +1,10 @@
+path: data/yolo
+train: images/train
+val: images/val
+test: images/test
 
+names:
+  0: pedestrian
+  1: car
+  2: van
+  3: truck
