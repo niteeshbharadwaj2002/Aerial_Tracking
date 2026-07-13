@@ -11,10 +11,7 @@ def main():
         epochs=100,
         patience=15,        # early stopping
         imgsz=512,
-        batch=4,            # lower to 8/4 if CPU-only or low VRAM
-        workers=4,
-        close_mosaic=0,
-        cache=True,
+        batch=8,            # lower to 8/4 if CPU-only or low VRAM
         device=0 if torch.cuda.is_available() else "cpu",
         project="outputs/runs",
         name="visdrone_baseline",
