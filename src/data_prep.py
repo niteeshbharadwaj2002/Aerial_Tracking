@@ -1,4 +1,4 @@
-import os
+import shutil
 from pathlib import Path
 from PIL import Image
 
@@ -62,7 +62,7 @@ def convert_split(img_dir, ann_dir, out_img_dir, out_lbl_dir):
 
         dst_img = out_img_dir / img_path.name
         if not dst_img.exists():
-            os.symlink(img_path.resolve(), dst_img)
+            shutil.copy2(img_path.resolve(), dst_img)
 
         n_images += 1
 

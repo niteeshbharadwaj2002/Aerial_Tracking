@@ -4,12 +4,16 @@ from pathlib import Path
 
 random.seed(42)  # reproducible split
 
-SRC_IMG_DIR = Path("data/DET-subset/images")
-SRC_ANN_DIR = Path("data/DET-subset/annotations")
+SRC_IMG_DIR = Path("data/VisDrone2019-DET-train/VisDrone2019-DET-train/images")
+SRC_ANN_DIR = Path("data/VisDrone2019-DET-train/VisDrone2019-DET-train/annotations")
 
 OUT_ROOT = Path("data/VisDrone2019-DET-split")
 TRAIN_RATIO = 0.8
 TEST_COUNT = 20  # 1% of 2000
+
+TEST_COUNT = 20
+TRAIN_COUNT = 1584
+VAL_COUNT = 396
 
 def copy_pairs(pairs, split_name):
     out_img = OUT_ROOT / split_name / "images"
@@ -29,24 +33,20 @@ def main():
     if missing:
         print(f"Warning: {missing} images had no matching annotation, skipped")
 
+    assert len(pairs) >= TEST_COUNT + TRAIN_COUNT + VAL_COUNT, "Not enough pairs for exact split"
+
     random.shuffle(pairs)
 
-    # --- Test set: 20 images, fully held out ---
     test_pairs = pairs[:TEST_COUNT]
-    remaining_pairs = pairs[TEST_COUNT:]  # 1980 images
-
-    # --- Remaining 1980 images: 80/20 train/val split ---
-    split_idx = int(len(remaining_pairs) * TRAIN_RATIO)
-    train_pairs = remaining_pairs[:split_idx]   # 1584
-    val_pairs = remaining_pairs[split_idx:]     # 396
+    train_pairs = pairs[TEST_COUNT:TEST_COUNT + TRAIN_COUNT]
+    val_pairs = pairs[TEST_COUNT + TRAIN_COUNT:TEST_COUNT + TRAIN_COUNT + VAL_COUNT]
 
     copy_pairs(train_pairs, "train")
     copy_pairs(val_pairs, "val")
     copy_pairs(test_pairs, "test")
 
     print(f"Total source pairs: {len(pairs)}")
-    print(f"Test (held out, NOT in train/val): {len(test_pairs)}")
-    print(f"Train: {len(train_pairs)} | Val: {len(val_pairs)}")
+    print(f"Test: {len(test_pairs)} | Train: {len(train_pairs)} | Val: {len(val_pairs)}")
 
 if __name__ == "__main__":
     main()
