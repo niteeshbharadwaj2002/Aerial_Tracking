@@ -99,15 +99,6 @@ All numbers above are from a development workstation. They do **not** represent 
 
 > Dense pedestrian scene (test set) — pedestrian is the weakest class overall (Recall 0.128, mAP@0.5 0.134 on the test set), and this image illustrates why: several small/distant pedestrians in the crowd go undetected even though 24 were correctly found. Aerial altitude shrinks pedestrians to just a handful of pixels, which is the main driver of missed detections here.
 
-### Tracking — qualitative summary
-
-<!-- TODO: Fill after reviewing tracked output -->
-
-> **Placeholder:** *N* unique tracks maintained across *M* frames; *X* ID switches observed.  
-> Source videos: `outputs/tracked/tracked_output_1.mp4`, `tracked_output_2.mp4`, `tracked_output_3.mp4`.
-
-![Tracking frame — placeholder](docs/assets/tracking_sample.jpg)
-
 ---
 
 ## Limitations & Next Steps
