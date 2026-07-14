@@ -1,4 +1,4 @@
-# aerial-object-detection-tracking
+# Aerial_Tracking
 
 **Detect and track pedestrians and vehicles from UAV aerial footage — optimized for small objects, high scene density, and edge deployment.**
 
