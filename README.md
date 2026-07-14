@@ -55,8 +55,14 @@ Best checkpoint from run `visdrone_baseline-6` (validation set, epoch 88 — hig
 | Precision | 0.467 |
 | Recall | 0.343 |
 
-<!-- TODO: Run `python tests/predict_test.py` and fill in held-out test-set numbers -->
-| **Test set (held-out)** | *TBD — run `python tests/predict_test.py`* |
+**Test set (held-out, 20 images):**
+
+| Metric | Value |
+|---|---|
+| mAP@0.5 | 0.314 |
+| mAP@0.5:0.95 | 0.192 |
+| Precision | 0.562 |
+| Recall | 0.293 |
 
 ### Deployment benchmarks
 
