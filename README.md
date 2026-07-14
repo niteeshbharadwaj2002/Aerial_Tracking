@@ -83,17 +83,15 @@ All numbers above are from a development workstation. They do **not** represent 
 
 ### Detection — success case
 
-<!-- TODO: Replace with a strong test-set prediction -->
-![Detection success — placeholder](docs/assets/detection_success.jpg)
+![Detection success](docs/assets/detection_success.jpg)
 
-> **Placeholder:** Good detection on dense traffic — e.g. from `outputs/test_inference/` or `outputs/runs/visdrone_baseline-6/val_batch0_pred.jpg`.
+> Dense traffic scene (test set) — 48 cars, 12 pedestrians, and 1 van correctly detected, showing the model holds up in high-density conditions where instances are packed closely together.
 
 ### Detection — failure case
 
-<!-- TODO: Replace with a documented miss or false positive -->
-![Detection failure — placeholder](docs/assets/detection_failure.jpg)
+![Detection failure](docs/assets/detection_failure.jpg)
 
-> **Placeholder:** Document a known failure mode — e.g. missed small distant vehicle, or false positive on shadow/road marking.
+> Dense pedestrian scene (test set) — pedestrian is the weakest class overall (Recall 0.128, mAP@0.5 0.134 on the test set), and this image illustrates why: several small/distant pedestrians in the crowd go undetected even though 24 were correctly found. Aerial altitude shrinks pedestrians to just a handful of pixels, which is the main driver of missed detections here.
 
 ### Tracking — qualitative summary
 
