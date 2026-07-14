@@ -43,7 +43,7 @@ This pipeline maps directly to UAV-based situational awareness: persistent surve
 - **Why SORT over DeepSORT:** No appearance embedding network → lower compute and memory, suitable for edge deployment. Aerial scenes often have moderate occlusion and spatial separation between instances, where motion-based association is sufficient for a baseline.
 
 ### Deployment
-- **Export:** ONNX (FP32 and INT8 quantization) via `src/export_benchmark.py` *(planned — script stub present)*.
+- **Export:** ONNX (FP32 and INT8 quantization) via `src/export_benchmark.py`.
 - **Benchmarks:** Side-by-side latency, FPS, and model-size comparison across PyTorch FP32, ONNX FP32, and ONNX INT8 runtimes.
 
 ---
@@ -109,7 +109,7 @@ All numbers above are from a development workstation. They do **not** represent 
 | Tracking robustness | DeepSORT or ByteTrack for heavy occlusion |
 | Sensors | Multi-camera / multi-drone fusion |
 | Validation | Real onboard hardware benchmarking (Jetson, flight computer) |
-| Export | Complete `src/export_benchmark.py` with INT8 quantization pipeline |
+| Export | Static-calibrated INT8 (vs. current dynamic quantization) for better accuracy/speed on x86 CPUs |
 
 These are roadmap items, not blockers — the current baseline establishes a reproducible end-to-end path from VisDrone data to tracked aerial video.
 
@@ -140,7 +140,7 @@ Obj_Detection_and_Tracking/
 │   ├── data_prep.py                   # VisDrone annotations → YOLO format
 │   ├── train.py                       # YOLOv8 fine-tuning
 │   ├── track.py                       # SORT tracker on MOT sequences
-│   └── export_benchmark.py            # ONNX export + latency benchmarks (stub)
+│   └── export_benchmark.py            # ONNX export + latency benchmarks
 ├── tests/
 │   ├── sanity_check.py                # Visualize random training labels
 │   └── predict_test.py                # Test-set metrics + inference
@@ -206,10 +206,9 @@ Edit the three paths at the top of `src/track.py` (`SEQ_DIR`, `MODEL_PATH`, `OUT
 python src/track.py
 ```
 
-### 7. Export & benchmark *(planned)*
+### 7. Export & benchmark
 
 ```bash
-# Stub — implement in src/export_benchmark.py
 python src/export_benchmark.py
 ```
 
