@@ -1,13 +1,3 @@
-"""
-track.py — Run SORT tracking on one VisDrone-MOT sequence using your trained YOLO model.
-
-Install once:
-    python -m pip install ultralytics opencv-python numpy scipy filterpy
-
-Just edit the 3 paths below and run from the repo root:
-    python src/track.py
-"""
-
 import os
 import glob
 import cv2
@@ -19,9 +9,9 @@ from ultralytics import YOLO
 # ---------------------------------------------------------------------------
 # EDIT THESE 3 LINES
 # ---------------------------------------------------------------------------
-SEQ_DIR = "data/MOT-subset/sequences/uav0000076_00720_v"           # folder of frame images
+SEQ_DIR = "data/VisDrone2019-MOT-split/sequences/uav0000305_00000_v"           # folder of frame images
 MODEL_PATH = "outputs/runs/visdrone_baseline-6/weights/best.pt"    # trained YOLO weights
-OUTPUT_PATH = "outputs/tracked/tracked_output_1.mp4"                # where to save the result
+OUTPUT_PATH = "outputs/tracked/tracked_output_3.mp4"                # where to save the result
 
 CONF_THRESHOLD = 0.25   # detection confidence cutoff
 IOU_THRESHOLD = 0.05     # SORT matching threshold
