@@ -18,6 +18,12 @@ These constraints matter directly for aerospace and UAV applications — runway 
 
 ---
 
+## Aerospace / Real-World Relevance
+
+This pipeline maps directly to UAV-based situational awareness: persistent surveillance over runways and landing zones, monitoring vehicle and pedestrian activity around airports or bases, and automated infrastructure inspection where a moving aerial platform must detect small objects in real time. The edge-deployment focus (YOLOv8n + ONNX) reflects the compute and power constraints of actual onboard flight hardware.
+
+---
+
 ## Approach
 
 ### Dataset
@@ -101,12 +107,6 @@ All numbers above are from a development workstation. They do **not** represent 
 > Source videos: `outputs/tracked/tracked_output_1.mp4`, `tracked_output_2.mp4`, `tracked_output_3.mp4`.
 
 ![Tracking frame — placeholder](docs/assets/tracking_sample.jpg)
-
----
-
-## Aerospace / Real-World Relevance
-
-This pipeline maps directly to UAV-based situational awareness: persistent surveillance over runways and landing zones, monitoring vehicle and pedestrian activity around airports or bases, and automated infrastructure inspection where a moving aerial platform must detect small objects in real time. The edge-deployment focus (YOLOv8n + ONNX) reflects the compute and power constraints of actual onboard flight hardware.
 
 ---
 
