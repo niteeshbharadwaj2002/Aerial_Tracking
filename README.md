@@ -120,41 +120,43 @@ These are roadmap items, not blockers — the current baseline establishes a rep
 ```
 Obj_Detection_and_Tracking/
 ├── data/
-│   ├── visdrone.yaml                  # YOLO dataset config (paths + class names)
-│   ├── subset_list.txt                # 2000-image DET subset manifest
-│   ├── VisDrone2019-DET-train/        # Raw DET subset (images + annotations)
-│   ├── VisDrone2019-DET-split/        # Train / val / test split
-│   │   ├── train/
-│   │   ├── val/
-│   │   └── test/
-│   ├── yolo/                          # YOLO-format images + labels
-│   │   ├── images/{train,val,test}/
-│   │   └── labels/{train,val,test}/
-│   ├── MOT-subset/                    # VisDrone-MOT sequences for tracking
-│   │   └── sequences/
-│   └── DET-subset/
+│   ├── visdrone.yaml                        # YOLO dataset config (paths + class names)
+│   ├── VisDrone2019-DET-split/               # Raw DET subset, split by src/split_dataset.py
+│   │   ├── train/{images,annotations}/
+│   │   ├── val/{images,annotations}/
+│   │   └── test/{images,annotations}/
+│   ├── VisDrone2019-MOT-split/                # VisDrone-MOT sequences for tracking eval
+│   │   ├── annotations/
+│   │   └── sequences/                        # uav0000137_00458_v, uav0000268_05773_v, uav0000305_00000_v
+│   └── yolo/                                 # YOLO-format images + labels (from src/data_prep.py)
+│       ├── images/{train,val,test}/
+│       └── labels/{train,val,test}/
 ├── models/
-│   └── yolov8n.pt                     # COCO-pretrained checkpoint
+│   ├── yolov8n.pt                     # COCO-pretrained checkpoint (base for training)
+│   └── yolo26n.pt
 ├── src/
 │   ├── split_dataset.py               # 80/19.8/1 split of DET subset
 │   ├── data_prep.py                   # VisDrone annotations → YOLO format
 │   ├── train.py                       # YOLOv8 fine-tuning
 │   ├── track.py                       # SORT tracker on MOT sequences
-│   └── export_benchmark.py            # ONNX export + latency benchmarks
+│   └── export_benchmark.py            # ONNX FP32/INT8 export + CPU latency/FPS/size benchmarks
 ├── tests/
 │   ├── sanity_check.py                # Visualize random training labels
 │   └── predict_test.py                # Test-set metrics + inference
+├── docs/
+│   └── assets/                        # README images (detection_success.jpg, detection_failure.jpg, ...)
 ├── outputs/                           # Generated artifacts (gitignored)
 │   ├── runs/visdrone_baseline-6/      # Weights, curves, batch previews
 │   ├── sanity_check/
-│   ├── test_inference/
-│   └── tracked/
+│   ├── export_benchmark/              # benchmark_results.md + exported best.onnx / best_int8.onnx
+│   ├── tracked/                       # tracked_output_1.mp4, tracked_output_2.mp4, tracked_output_3.mp4
+│   └── gif/                           # tracked_output_1.gif, tracked_output_3.gif (README demo)
 ├── requirements.txt
 ├── pyproject.toml
 └── README.md
 ```
 
-> **Note:** `data/` and `outputs/` are gitignored. Download VisDrone data separately (see Setup).
+> **Note:** `data/` is gitignored. Download VisDrone data separately (see Setup). Most of `outputs/` is generated locally by the scripts above; the demo GIFs under `outputs/gif/` are kept so they render in this README.
 
 ---
 
