@@ -10,6 +10,7 @@
 <!-- Suggested source: outputs/tracked/tracked_output_1.mp4 -->
 
 ![Tracking demo — placeholder](outputs/gif/tracked_output_3.gif)
+![Tracking demo — placeholder](outputs/gif/tracked_output_1.gif)
 
 > **Placeholder:** Add a GIF here (recommended: 640 px wide, ~10 s loop from `outputs/tracked/tracked_output_3.mp4`).
 
