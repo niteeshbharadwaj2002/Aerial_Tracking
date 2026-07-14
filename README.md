@@ -65,16 +65,16 @@ Best checkpoint from run `visdrone_baseline-6` (validation set, epoch 88 — hig
 
 ### Deployment benchmarks
 
-<!-- TODO: Fill after running src/export_benchmark.py -->
-
 | Config | Latency (ms) | FPS | Model size (MB) |
 |---|---|---|---|
-| PyTorch FP32 | *TBD* | *TBD* | *TBD* |
-| ONNX FP32 | *TBD* | *TBD* | *TBD* |
-| ONNX INT8 | *TBD* | *TBD* | *TBD* |
+| PyTorch FP32 | 18.75 | 53.33 | 5.94 |
+| ONNX FP32 | 19.18 | 52.14 | 11.64 |
+| ONNX INT8 | 30.84 | 32.42 | 3.14 |
 
-**Test hardware:** *[TBD — e.g. NVIDIA RTX 3060 Laptop, Intel i7, 16 GB RAM]*  
+**Test hardware:** Apple M3 (Mac Air), CPU-only inference for all configs.  
 All numbers above are from a development workstation. They do **not** represent onboard flight-hardware performance.
+
+> **Note:** ONNX INT8 (dynamic quantization) is smallest on disk (~2x smaller than FP32) but *slower* here — Apple Silicon's ARM64 CPU lacks the fast native INT8 GEMM kernels that x86 (VNNI) has, so `onnxruntime` dequantizes weights back to FP32 at runtime before each matmul, adding overhead without a compute win. INT8 would likely show its expected speedup on x86 CPUs with VNNI support, or via a hardware-accelerated path (CoreML/ANE execution provider, TensorRT, etc.) rather than plain CPU dynamic quantization.
 
 ---
 
