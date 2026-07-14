@@ -9,9 +9,9 @@
 <!-- TODO: Replace with an embedded GIF once exported from tracked output video -->
 <!-- Suggested source: outputs/tracked/tracked_output_1.mp4 -->
 
-![Tracking demo — placeholder](docs/assets/demo_tracking.gif)
+![Tracking demo — placeholder](outputs/tracked/tracked_output_3.mp4)
 
-> **Placeholder:** Add a GIF here (recommended: 640 px wide, ~10 s loop from `outputs/tracked/tracked_output_*.mp4`).
+> **Placeholder:** Add a GIF here (recommended: 640 px wide, ~10 s loop from `outputs/tracked/tracked_output_3.mp4`).
 
 ---
 
